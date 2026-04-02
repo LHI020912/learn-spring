@@ -1,0 +1,14 @@
+package com.di.spring_di_annotation;
+
+public class NameController {
+	NameService nameService;
+	// setter를 통해 주입받는 경우
+	// 생성자가 다른 전달받을 내용이 많을때는 setter를 활용 해 주입 받기
+	public NameController(NameService nameService) {
+		this.nameService = nameService;
+	}
+	
+	public void show(String name) {
+		System.out.println("Name Controller: "+nameService.showName(name));
+	}
+}

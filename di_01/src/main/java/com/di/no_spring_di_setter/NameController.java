@@ -1,0 +1,13 @@
+package com.di.no_spring_di_setter;
+
+public class NameController {
+	NameService nameService;
+	// 생성자가 다른 전달받을 내용이 많을 때는 setter를 활용 해 주입받기
+	public void setNameService(NameService nameService) {
+		this.nameService=nameService;
+	}
+	
+	public void show(String name) {
+		System.out.println("Name Controller: "+nameService.showName(name));
+	}
+}

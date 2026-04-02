@@ -1,0 +1,6 @@
+package com.di.spring_di_annotation.configuration_bean;
+
+@Configuration
+public class ApplicationConfig {
+
+}

@@ -1,0 +1,7 @@
+package com.di.spring_di_annotation.configuration_bean;
+
+public class BMI {
+	public void showBMI(float height, float weight) {
+		float bmi = weight/(height*height) * 10000;
+	}
+}

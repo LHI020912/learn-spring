@@ -1,0 +1,5 @@
+package com.di.no_spring_no_di;
+
+public class NameController {
+
+}

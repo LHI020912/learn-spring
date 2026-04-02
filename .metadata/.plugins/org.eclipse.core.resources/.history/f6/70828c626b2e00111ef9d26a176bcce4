@@ -1,0 +1,18 @@
+package com.spring_mvc.data;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class NewController {
+
+	@RequestMapping("/")
+	public String index() {
+		return "index"; // view 페이지명을 결정하는 문자열 => /webapp/
+	}
+	
+	@RequestMapping("/showInfo")
+	public String showInfo() {
+		return "";
+	}
+}

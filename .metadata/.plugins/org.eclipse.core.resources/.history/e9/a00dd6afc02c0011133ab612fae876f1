@@ -1,0 +1,20 @@
+package com.di.spring_di_xml_setter_ex;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class TV {
+	private Speaker speaker;
+	
+	@Autowired
+	public void setSpeaker(Speaker speaker) {
+		this.speaker = speaker;
+		// 밖에서 넣어준 그 스피커를 TV 내부의 speaker라는 변수에 저장해두고 계속 쓰겠다는 뜻
+	}
+
+	public void volumeUp() {
+		speaker.volumeUp();
+	}
+	public void volumeDown() {
+		speaker.volumeDown();
+	}
+}

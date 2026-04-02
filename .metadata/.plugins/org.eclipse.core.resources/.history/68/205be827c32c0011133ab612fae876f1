@@ -1,0 +1,19 @@
+package com.di.spring_di_annotation_ex2;
+
+import java.util.ArrayList;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+@ComponentScan("com.di.spring_di_annotation.configuration_bean")
+@Configuration
+public class ApplicationConfig {
+	
+	@Bean
+	public Speaker speaker() {
+		Speaker speaker = new Speaker();
+		return speaker;
+	}
+	
+}

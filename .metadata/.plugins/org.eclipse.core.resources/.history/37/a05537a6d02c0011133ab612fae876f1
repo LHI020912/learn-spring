@@ -1,0 +1,8 @@
+package com.spiring_aop.xml;
+
+// 핵심기능
+public class Gugudan {
+	// 각 핵심기능의 시작시간 종료시간을 로그 기록
+	// 핵심기능 수행 전/후에 시간 출력
+
+}

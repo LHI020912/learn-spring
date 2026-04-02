@@ -1,0 +1,13 @@
+package com.di.spring_di_xml;
+
+//DI 의존성 주입1
+// 프레임워크로 가정하는 핸들러 클래스
+// 자바문법에 맞춰서 코드가 진행되게 됨
+public class NameMain {
+
+	public static void main(String[] args) {
+		NameService nameService = new NameService();
+		NameController controller = new NameController(nameService);
+		controller.show("양정원");
+	}
+}

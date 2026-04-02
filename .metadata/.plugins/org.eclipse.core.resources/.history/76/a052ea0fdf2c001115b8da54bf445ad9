@@ -1,0 +1,35 @@
+package com.spiring_aop.xml2;
+
+public class Evaluation {
+	private int ko;
+	private int eg;
+	private int math;
+	
+	public int getKo() {
+		return ko;
+	}
+	public void setKo(int ko) {
+		this.ko = ko;
+	}
+	public int getEg() {
+		return eg;
+	}
+	public void setEg(int eg) {
+		this.eg = eg;
+	}
+	public int getMath() {
+		return math;
+	}
+	public void setMath(int math) {
+		this.math = math;
+	}
+	
+	public void showAvg() {
+		
+	}
+
+	public void showSum() {
+		
+	}
+
+}
