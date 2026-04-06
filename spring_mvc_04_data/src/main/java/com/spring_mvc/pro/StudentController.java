@@ -1,5 +1,6 @@
 package com.spring_mvc.pro;
 
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring_mvc.DTO.Student;
 
@@ -197,42 +199,50 @@ public class StudentController {
 		model.addAttribute("stdList",stdList);
 		return "student/studentSearchResult";
 	}
+	// 요청 처리 후 redirect진행 메소드 : redirect: 접두어 사용
+	// 현재 context(pro)가 아닌 다른 context(data)로 redirect
+	@RequestMapping("/redirect")
+	public String redirect() {
+		System.out.println("redirect");
+		return "redirect:../data/showInfo"; // ..은 현재 위치를 벗어남
+		// return "redirect:/data/showInfo"; // 현재 context기준으로 uri 구성 http://localhost:8080/pro/data/showInfo
+		// 뷰 리졸버 api는 redirect:확인하면 프론트 컨트롤러에게 redirect:/showInfo전달
+		// 프론트컨트롤러는 클라이언트에게 redirect 신호를 보냄(응답)-> 클라이언트/ showInfo를 재요청
+	}
 	
+	////////////////////////////
+	// redirect 시 param(data)전달
+	
+	// url에 첨부해서 파라미터 전달: 쿼리스트링 방식
+	@RequestMapping("/redirectParam1")
+	public String redirectParam() throws Exception {
+		String nation="대한민국1";
+		nation = URLEncoder.encode(nation,"UTF-8");
+		return "redirect:/showRedirectParam/?namtion="+nation;
+	}
+	
+	// model 객체
+	@RequestMapping("/redirectParam2")
+	public String redirectParam(Model model) {
+		// spring 내 serlvet api가 쿼리스트링 방식으로 코드 자동 변환 시켜줌
+		model.addAttribute("nation","대한민국2");
+		return "redirect:/showRedirectParam";		
+	}
+	
+	// RedirectAttributes 객체 이용
+	@RequestMapping("/redirectParam3")
+	public String redirectParam(RedirectAttributes reAttr) {
+		reAttr.addAttribute("nation","대한민국3");
+		// spring 내 serlvet api가 쿼리스트링 방식으로 코드 자동 변환 시켜줌
+		return "redirect:/showRedirectParam";	
+	}
+	
+	// redirect 되는 곳
+	@RequestMapping("/showRedirectParam")
+	public String showParam(@RequestParam("nation") String nation, Model model) {
+		System.out.println(nation);
+		model.addAttribute("nation", nation);
+		return "showRedirectParam";
+	}
 	
 }//클래스 끝
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

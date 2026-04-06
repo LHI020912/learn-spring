@@ -9,7 +9,7 @@ public class Product {
 	private String prdName;
 	private int prdPrice;
 	private String prdCompany;
-	@DateTimeFormat(pattern="")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date prdDate;
 	private int prdStock;
 	

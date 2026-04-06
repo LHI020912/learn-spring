@@ -1,8 +1,0 @@
-package com.di.spring_di_xml_constructor_ex;
-
-public class TV {
-	public String volumeSize(String volume) {
-		String tvVolume = "볼륨을 "+volume+"니다.";
-		return tvVolume;
-	}
-}
