@@ -1,0 +1,64 @@
+package com.spring_mvc.batis.service;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+
+import com.spring_mvc.batis.model.IProductDAO;
+import com.spring_mvc.batis.vo.ProductVO;
+
+@Service
+public class ProductService implements IProductService {
+	// DAO 객체 주입 (인터페이스 객체 주입)
+	@Autowired
+	@Qualifier("IProductDAO")
+	IProductDAO dao;
+	
+	@Override
+	public ArrayList<ProductVO> listAllProduct() {
+		// dao 관련 메소드 호출
+		return dao.listAllProduct();
+	}
+
+	@Override
+	public void insertProduct(ProductVO prdVo) {
+		dao.insertProduct(prdVo);
+	}
+
+	@Override
+	public void updateProduct(ProductVO prdVo) {
+		dao.updateProduct(prdVo);
+		
+	}
+
+	@Override
+	public void deleteProduct(String prdNo) {
+		dao.deleteProduct(prdNo);
+		
+	}
+
+	@Override
+	public ProductVO detailViewProduct(String prdNo) {
+		return dao.detailViewProduct(prdNo);
+	}
+
+	// 상품번호 중복 확인
+	@Override
+	public String prdNoCheck(String prdNo) {
+		String no = dao.prdNoCheck(prdNo);
+		String result = "available";
+		
+		if(no != null) { result="no_available"; }
+		return result;
+	}
+
+	@Override
+	public ArrayList<ProductVO> productSearch(HashMap<String, Object> map) {
+		return dao.productSearch(map);
+	}
+	
+
+}

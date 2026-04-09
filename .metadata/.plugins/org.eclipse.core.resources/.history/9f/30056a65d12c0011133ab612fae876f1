@@ -1,6 +1,0 @@
-package com.spiring_aop.xml;
-
-// 공통기능 메소드 포함
-public class PerformaceAspect {
-
-}
