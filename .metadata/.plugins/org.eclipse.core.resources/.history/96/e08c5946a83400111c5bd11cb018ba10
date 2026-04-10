@@ -1,0 +1,25 @@
+package com.spring_boot_fileupload.mybatis.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.UUID;
+
+@Controller
+public class fileController {
+	@GetMapping("/")
+	public String index(){
+		return "index";
+	}
+	
+	@GetMapping("/fileUploadForm")
+	public String uploadForm() {
+		return "upload/fileUploadForm";
+	}
+	
+	@PostMapping("fileUpload")
+	public String fileUpload() {
+		String uploadPath="D:/springbootWorkspace/upload";
+	}
+}

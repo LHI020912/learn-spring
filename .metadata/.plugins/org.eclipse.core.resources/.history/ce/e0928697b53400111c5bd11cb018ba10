@@ -1,0 +1,30 @@
+package com.spring_boot_fileupload.mybatis.file;
+
+import java.io.File;
+import java.io.IOException;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import jakarta.servlet.http.HttpServletResponse;
+
+@Controller
+public class FileDownloadController {
+
+	@GetMapping("/fileDownloadView")
+	public String fileDownloadView(Model model) {
+		String downloadPath = "D:/springbootWorkspace/upload";
+		File path = new File(downloadPath);
+		String[] filelist = path.list(); // 파일 경로의 모든 파일의 경로와 이름정보를 리스트로 반환
+		
+		model.addAttribute("fileList",filelist);
+		return "upload/fileDownloadListView";
+	}
+	
+	@GetMapping("/fileDownload/{file}")
+	public void fileDownload(@PathVariable String file, HttpServletResponse response) throws IOException {
+		
+	}
+}

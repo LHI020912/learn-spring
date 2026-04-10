@@ -1,0 +1,10 @@
+package com.spring_boot_fileupload.mybatis.file;
+
+@Controller
+public class FileDownloadController {
+
+	@GetMapping("/fileDownloadView")
+	public String fileDownloadView() {
+		String downloadPath = "d:/springworkspace/upload";
+	}
+}

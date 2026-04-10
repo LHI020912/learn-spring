@@ -1,0 +1,12 @@
+1771211234903	Move 'BoardApplication.java' to 'com'
+1771220506193	Rename package 'RegisterForm'
+1771225578286	Copy compilation unit
+1771225602967	Delete element
+1771225726675	Rename type 'config'
+1771247976258	Delete element
+1771250453395	Rename package 'com.service'
+1771250463317	Rename package 'com.security'
+1771250483709	Rename package 'com.config'
+1771250488927	Rename package 'com.controller'
+1771250495657	Rename package 'com.entity'
+1771250501497	Rename package 'com.repository'
