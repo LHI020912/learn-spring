@@ -17,9 +17,11 @@ $(document).ready(function(){
             success:function(result){ // result 매개변수 추가 (필수!)
                 if(result === "success"){ // === 사용 권장
                     alert("로그인 성공 \nMain 페이지로 이동합니다.");
-                    location.href="/"; 
+                    location.href="/";
                 } else { 
-                    alert("아이디 또는 비밀번호가 일치하지 않습니다."); 
+                    alert("아이디 또는 비밀번호가 일치하지 않습니다.");
+					$('#pwd').val("");
+					$('#id').val("").focuse();
                 }
             },
             error:function(){ alert("전송실패"); }

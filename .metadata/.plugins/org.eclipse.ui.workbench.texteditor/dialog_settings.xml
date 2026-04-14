@@ -3,6 +3,8 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<section name="java.lang.Class">
 		<list key="findhistory">
+			<item value="Login"/>
+			<item value="Lo"/>
 			<item value="root"/>
 			<item value="deleteBookmarkRequest"/>
 			<item value="bookmark-list"/>

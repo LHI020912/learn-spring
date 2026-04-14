@@ -3,7 +3,8 @@ package com.spring_boot_book.project.model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.spring_boot_mybatis.project_book.model.BookVO;
+import com.spring_boot_book.project.vo.BookVO;
+
 
 public interface IBookDAO {
 	

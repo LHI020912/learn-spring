@@ -1,4 +1,4 @@
-package com.spring_boot_mybatis.project_book.service;
+package com.spring_boot_book.project.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,8 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.spring_boot_mybatis.project_book.dao.IBookDAO;
-import com.spring_boot_mybatis.project_book.model.BookVO;
+import com.spring_boot_book.project.model.IBookDAO;
+import com.spring_boot_book.project.vo.BookVO;
+
 
 
 @Service

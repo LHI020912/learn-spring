@@ -24,7 +24,7 @@
 
 	<!-- 도서 등록 -->
 	<insert id="insertBook"
-		parameterType="com.spring_boot_mybatis.project_book.model.BookVO">
+		parameterType="com.spring_boot_book.project.vo.BookVO">
 		INSERT INTO book
 		VALUES(#{bookNo}, #{bookName}, #{bookAuthor}, #{bookPrice}, #{bookDate}, #{bookStock},
 		#{pubNo});
@@ -32,7 +32,7 @@
 
 	<!-- 도서 상세 정보 조회 -->
 	<select id="detailViewBook" parameterType="string"
-		resultType="com.spring_boot_mybatis.project_book.model.BookVO">
+		resultType="com.spring_boot_book.project.vo.BookVO">
 		SELECT * FROM book WHERE bookNo = #{bookNo}
 	</select>
 
@@ -67,9 +67,20 @@
   			</choose>
   	</select>
 
-
-
-
-
+	<!-- public String loginCheck(String id) -->
+	 <select id="loginCheck" parameterType="string" resultType="string">
+	 	SELECT memPwd FROM member WHERE memId=#{id}
+	 </select>
+	 
+	<!-- public String idCheck(String id) : 아이디 중복 체크 -->
+	<select id="idCheck" parameterType="string" resultType="string">
+		SELECT memId FROM member WHERE memId=#{id}
+	</select>
+	
+	<!-- public void insertMember(MemberVO vo) :  -->
+	<insert id="insertMember" parameterType="com.spring_boot_book.project.vo.MemberVO">
+		INSERT INTO member(memId, memPwd, memName, memEmail, memHp, memZipcode, memAddress1, memAdress2)
+		VALUES (#{memId},#{memPwd},#{memName},#{memEmail},#{memHp},#{memZipcode},#{memAddress1},#{memAdress2})
+	</insert>
 
 </mapper>

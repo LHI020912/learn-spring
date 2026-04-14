@@ -8,6 +8,7 @@
 		<title>로그인 폼</title>
 		<!-- head.jsp -->
 		<c:import url="/WEB-INF/views/layout/head.jsp"></c:import>
+		<script type="text/javascript" src="<c:url value='/js/login.js'/>"></script>
 	</head>
 	<body>
 		<div id="wrap"> 			

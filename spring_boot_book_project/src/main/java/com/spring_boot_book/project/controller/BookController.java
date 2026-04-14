@@ -1,4 +1,4 @@
-package com.spring_boot_mybatis.project_book.controller;
+package com.spring_boot_book.project.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.spring_boot_mybatis.project_book.model.BookVO;
-import com.spring_boot_mybatis.project_book.service.BookService;
+import com.spring_boot_book.project.service.BookService;
+import com.spring_boot_book.project.vo.BookVO;
+
 
 @Controller
 public class BookController {
