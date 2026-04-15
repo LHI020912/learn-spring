@@ -5,7 +5,7 @@
  */
 
 $(document).ready(function(){
-    $('#joinForm').on('submit',function(event){
+	$('#idCheck').on('click', function(event){
         event.preventDefault();
 		let memId = $('#memId').val();
 		

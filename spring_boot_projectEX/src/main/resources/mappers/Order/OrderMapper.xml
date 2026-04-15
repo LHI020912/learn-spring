@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring_boot.projectEX.model.IOrderDAO">
+	<!-- MemberDTO getMemberInfo(String memId) -->
+	<select id="" parameterType="getMemberInfo" resultType="com.spring_boot.projectEX.dto.OrderDTO">
+		SELECT * FROM member WHERE memId=#{memId}
+	</select>
+</mapper>

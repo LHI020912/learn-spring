@@ -29,11 +29,11 @@
 				<c:forEach items="${prdList}" var="prd">
 					<tr>
 						<td><a href="<c:url value='/product/detailViewProduct/${prd.prdNo}'/>">${prd.prdNo}</a></td>
-						<td><a href="<c:url value='/product/detailViewProduct/${prd.prdName}'/>">${prd.prdName}</a></td>
-						<td><a href="<c:url value='/product/detailViewProduct/${prd.prdPrice}'/>">${prd.prdPrice}</a></td>
-						<td><a href="<c:url value='/product/detailViewProduct/${prd.prdCompany}'/>">${prd.prdCompany}</a></td>
-						<td><a href="<c:url value='/product/detailViewProduct/${prd.prdStock}'/>">${prd.prdStock}</a></td>
-						<td><a href="<c:url value='/product/detailViewProduct/${prd.prdDescript}'/>">${prd.prdDescript}</a></td>
+						<td><a href="<c:url value='/product/detailViewProduct/${prd.prdNo}'/>">${prd.prdName}</a></td>
+						<td><a href="<c:url value='/product/detailViewProduct/${prd.prdNo}'/>">${prd.prdPrice}</a></td>
+						<td><a href="<c:url value='/product/detailViewProduct/${prd.prdNo}'/>">${prd.prdCompany}</a></td>
+						<td><a href="<c:url value='/product/detailViewProduct/${prd.prdNo}'/>">${prd.prdStock}</a></td>
+						<td><a href="<c:url value='/product/detailViewProduct/${prd.prdNo}'/>">${prd.prdDescript}</a></td>
 						<td><img src="<c:url value='/prd_images/${prdImg}'/>"width="30" height="20"></td>
 					</tr>
 				</c:forEach>

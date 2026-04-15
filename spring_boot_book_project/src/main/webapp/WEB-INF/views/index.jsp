@@ -18,5 +18,9 @@
 		<h3>도서 검색</h3>
 		<a href="<c:url value='/book/bookSearchForm1'/>">도서검색1</a><br>
 		<a href="<c:url value='/book/bookSearchForm2'/>">도서검색2</a><br>
+		
+		<h3>로그인</h3>
+		<a href="<c:url value='/member/loginForm'/>">로그인</a><br>
+		<a href="<c:url value='/member/joinForm'/>">회원가입</a><br>
 	</body>
 </html>

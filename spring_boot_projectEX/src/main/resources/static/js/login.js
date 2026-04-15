@@ -21,7 +21,7 @@ $(document).ready(function(){
                 } else { 
                     alert("아이디 또는 비밀번호가 일치하지 않습니다.");
 					$('#pwd').val("");
-					$('#id').val("").focuse();
+					$('#id').val("").focus();
                 }
             },
             error:function(){ alert("전송실패"); }
