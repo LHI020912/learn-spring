@@ -25,5 +25,19 @@ public class ProductService implements IProductService {
 	public ProductDTO detailViewProduct(String prdNo) {
 		return dao.detailViewProduct(prdNo);
 	}
-	
+
+	@Override
+	public void insertProduct(ProductDTO dto) {
+		dao.insertProduct(dto);
+	}
+
+	@Override
+	public void updateProduct(ProductDTO dto) {
+		dao.updateProduct(dto);
+	}
+
+	@Override
+	public void deleteProduct(String prdNo) {
+		dao.deleteProduct(prdNo);
+	}
 }

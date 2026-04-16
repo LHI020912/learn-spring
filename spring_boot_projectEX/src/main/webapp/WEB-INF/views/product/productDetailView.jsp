@@ -48,6 +48,8 @@
 								<c:if test="${not empty sessionScope.sid}">
 								    <input type="submit" id="insertCart" value="장바구니">
 								    <input type="submit" id="insertOrder" value="주문하기">
+								    <button type="button" onclick="location.href='<c:url value='/product/updateProductForm/${prd.prdNo}'/>'">수정</button>
+				            		<button type="button" class="deleteBtn" data-no="${prd.prdNo}">삭제</button>
 							   </c:if>
 						</td></tr>
 					</table>

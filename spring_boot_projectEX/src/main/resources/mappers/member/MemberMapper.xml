@@ -22,11 +22,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT memId FROM member WHERE memId=#{id}
 	</select>
 	
-	<!-- public void insertMember(MemberDTO dto) :  -->
+	<!-- public void insertMember(MemberDTO dto) : 가입 -->
 	<insert id="insertMember" parameterType="com.spring_boot.projectEX.dto.MemberDTO">
 		INSERT INTO member(memId, memPwd, memName, memEmail, memHp, memZipcode, memAddress1, memAddress2)
 		VALUES (#{memId},#{memPwd},#{memName},#{memEmail},#{memHp},#{memZipcode},#{memAddress1},#{memAddress2})
 	</insert>
 	
+	<!-- 마이페이지 : 회원관리 -->
+	
+	<!-- public MemberDTO getMemberInfo(String memId) : 조회 -->
+	<select id="getMemberInfo" resultType="com.spring_boot.projectEX.dto.MemberDTO">
+		SELECT * FROM member WHERE memId=#{id}
+	</select>
+	
+	<!-- public void updateMember(MemberDTO dto) : 수정 -->
+	<update id="updateMember" parameterType="com.spring_boot.projectEX.dto.MemberDTO">
+		UPDATE member
+		SET memName=#{memName}, memEmail=#{memEmail}, 
+        	memZipcode=#{memZipcode}, memAddress1=#{memAddress1}, 
+        	memAddress2=#{memAddress2}, memHp=#{memHp}
+        WHERE memId=#{memId}
+	</update>
+	
+	<!-- public void deleteMember(String memId) : 탈퇴 -->
+	<delete id="deleteMember" parameterType="string">
+		DELETE FROM member WHERE memId=#{id}
+	</delete>
 	
 </mapper>

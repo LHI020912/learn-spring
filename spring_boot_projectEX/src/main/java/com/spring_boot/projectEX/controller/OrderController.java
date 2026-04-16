@@ -1,11 +1,18 @@
 package com.spring_boot.projectEX.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.spring_boot.projectEX.dto.CartDTO;
+import com.spring_boot.projectEX.dto.OrderInfoDTO;
 import com.spring_boot.projectEX.dto.MemberDTO;
 import com.spring_boot.projectEX.server.ICartService;
 import com.spring_boot.projectEX.server.IOrderService;
@@ -19,7 +26,7 @@ public class OrderController {
 	ICartService cartService;
 	
 	@Autowired
-	IOrderService orderService;
+	IOrderService ordService;
 
 	@PostMapping("/product/orderForm")
 	public String orderForm(
@@ -32,7 +39,7 @@ public class OrderController {
 		cartService.updateCart(cartNo,cartQty);
 		
 		// 주문서에 출력할 주문자 기본 정보 가져오기
-		MemberDTO dto = orderService.getMemberInfo(memId);
+		MemberDTO dto = ordService.getMemberInfo(memId);
 		
 		// hp 정보
 		String[] hp = (dto.getMemHp()).split("-");
@@ -44,11 +51,56 @@ public class OrderController {
 		
 		// 연습문제 1 장바구니 목록 가져오기(cartList / memId)
 		// orderForm.jsp 에 필요한 value 표현
-		
+		// (3) 주문서에 출력할 주문 장바구니 목록 추출
+		ArrayList<CartDTO> cartList = cartService.cartList(memId);
+		model.addAttribute("cartList",cartList);
 		// 연습문제 2 cartList에서 수량변경 하면 구매금액과 총구매금액에 변경되도록 js 추가
 		// 수량변경 : input text에 직접변경을 함
 		
 		return "product/orderForm";
 	}
 	
+	// 주문정보, 주문 상품 정보 테이블에 저장, 주문상품정보는 cart테이블의 상품을 order-product 테이블로 이동
+	@PostMapping("/product/orderComplete")
+	public String orderInsert(OrderInfoDTO orderDto,
+							  @RequestParam String hp1,
+							  @RequestParam String hp2,
+							  @RequestParam String hp3, Model model,
+							  HttpSession session) {
+		
+		// 전화번호 설정
+		String hp=hp1+"-"+hp2+"-"+hp3;
+		orderDto.setOrdRcvPhone(hp);
+		
+		// memId 설정
+		orderDto.setMemId((String)session.getAttribute("sid"));
+		
+		// 주문번호 생성 및 설정
+		// 주문번호: 주문날짜 시분초+랜덤숫자4개
+		long timeNum = System.currentTimeMillis();
+		// 날짜시간 포맷: MM mm HH
+		SimpleDateFormat dayTime = new SimpleDateFormat("yyyyMMddHHmmss");
+		String srtTime = dayTime.format(new Date(timeNum));
+		
+		// 랜덤숫자 4개 생성
+		String rNum ="";
+		for(int i=1; i<=4; i++) {
+			rNum += (int)(Math.random()*10);
+		}
+		String ordNo = srtTime+"_"+rNum;
+		orderDto.setOrdNo(ordNo);
+		
+		ordService.insertOrderInfo(orderDto);
+		model.addAttribute("ordNo",ordNo);
+		return "product/orderCompleteView";
+	}
+	
+	// 현재 로그인한 회원의 주문목록
+	@GetMapping("/order/orderListView")
+	public String orderList(HttpSession session, Model model) {
+		String memId = (String)session.getAttribute("sid");
+		ArrayList<OrderInfoDTO> ordList = ordService.orderList(memId);
+		model.addAttribute("ordList",ordList);
+		return "product/orderListView";
+	}
 }

@@ -61,4 +61,22 @@ public class MemberService implements IMemberService {
 		return dao.idCheck(id);
 	}
 
+	//////////////////
+	
+	@Override
+	public MemberDTO getMemberInfo(String memId) {
+		return dao.getMemberInfo(memId);
+	}
+
+	@Override
+	public void updateMember(MemberDTO dto) {
+		dao.updateMember(dto);
+	}
+
+	@Override
+	public void deleteMember(String memId) {
+		dao.deleteMember(memId);
+	}
+
+	
 }

@@ -5,7 +5,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>주문 완료</title>
+		<title>My Page</title>
 		<c:import url="/WEB-INF/views/layout/head.jsp" />		
 	</head>
 	<body>
@@ -13,8 +13,9 @@
         	<!--  top -->         
         	<c:import url="/WEB-INF/views/layout/top.jsp" />
 			<section>		
-				<h3>주문 완료</h3>
-				여기에 필요한 내용 적으면 됨
+				<h3>My Page</h3>
+				주문내용<br><br>
+				<button><a href="<c:url value='/order/orderListView'/>">주문 목록 보기</a></button>
 			</section> 
 		
 			<!--  bottom -->         
