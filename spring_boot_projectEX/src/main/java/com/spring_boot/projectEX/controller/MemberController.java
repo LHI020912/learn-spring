@@ -4,20 +4,29 @@ import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.spring_boot.projectEX.dto.MemberDTO;
 import com.spring_boot.projectEX.server.IMemberService;
 
 import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class MemberController {
-
+	// memService에 매핑되는 bean이 2개 이상 오류
 	@Autowired
 	IMemberService memService;
+	
+	// myPage
+	@GetMapping("/member/myPage")
+	public String myPage() {
+		return "member/myPage";
+	}
 	
 	// 로그인 폼
 	@GetMapping("/member/loginForm")
@@ -25,6 +34,7 @@ public class MemberController {
 		return "member/loginForm";
 	}
 	
+	/*
 	// 로그인 처리
 	@ResponseBody
 	@PostMapping("/member/login")
@@ -35,6 +45,20 @@ public class MemberController {
 		if(memId!=null) {
 			session.setAttribute("sid",memId);
 			result="success";
+		}
+		return result;
+	}
+	 */
+
+
+	// 로그인 처리
+	@ResponseBody
+	@PostMapping("/member/login")
+	public String loginCheck(@RequestParam HashMap<String, Object>param, HttpSession session) { // 현재 요청 클라이언트의 session이 전달
+	    String result=memService.loginCheck(param);
+		// 로그인 세션 처리
+		if(result.equals("success")) {
+			session.setAttribute("sid",param.get("id"));
 		}
 		return result;
 	}
@@ -56,10 +80,51 @@ public class MemberController {
 	@ResponseBody
 	@PostMapping("/member/idCheck")
 	public int idCheck(@RequestParam String id) {
-		String id_red = memService.idCheck(id);
-		
+		String id_res = memService.idCheck(id);
 		int result = 0;
-		if(id_red != null) { result=1; }
+		if(id_res != null) { result=1; }
 		return result;
+	}
+	
+	@PostMapping("/member/join")
+	public String join(MemberDTO dto, @RequestParam("memHp1") String memHp1,
+									  @RequestParam("memHp2") String memHp2,
+									  @RequestParam("memHp3") String memHp3) {
+		String memHp = memHp1 +"-"+memHp2+"-"+memHp3;
+		dto.setMemHp(memHp);
+		memService.insertMember(dto); // 회원가입 완료 후 오류가 없으면
+		return "redirect:/member/loginForm";
+	}
+
+	//////////////////
+	
+	// 확인
+	@PostMapping("/member/memberInfo")
+	public String memberInfo(HttpSession session, Model model) {
+		String memId = (String) session.getAttribute("sid");
+		MemberDTO dto = memService.getMemberInfo(memId);
+		model.addAttribute("memDto",dto);
+		return "member/memberInfo";
+	}
+	
+	// 수정
+	@PostMapping("/member/memberUpdate")
+	public String memberUpdate(MemberDTO dto,
+					  @RequestParam("memHp1") String memHp1,
+					  @RequestParam("memHp2") String memHp2,
+					  @RequestParam("memHp3") String memHp3) {
+		String memHp = memHp1+"-"+memHp2+"-"+memHp3;
+		dto.setMemHp(memHp);
+		memService.updateMember(dto);
+		return "redirect:/member/myPage";
+	}
+	
+	// 탈퇴
+	@ResponseBody
+	@GetMapping("/member/memberDelete/{memId}")
+	public String memberDelete(@PathVariable String memId, HttpSession session) {
+		memService.deleteMember(memId);
+		session.invalidate();
+	    return "success";
 	}
 }

@@ -2,7 +2,16 @@
 <section name="Workbench">
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<section name="java.lang.Class">
+		<item key="replaceBarOpen" value="false"/>
 		<list key="findhistory">
+			<item value="detail"/>
+			<item value="detailViewOrder"/>
+			<item value=";"/>
+			<item value="order"/>
+			<item value="all"/>
+			<item value="formatNuber"/>
+			<item value="Login"/>
+			<item value="Lo"/>
 			<item value="root"/>
 			<item value="deleteBookmarkRequest"/>
 			<item value="bookmark-list"/>
@@ -10,8 +19,6 @@
 			<item value="console"/>
 			<item value="emnt"/>
 			<item value="emt"/>
-			<item value="bookkma"/>
-			<item value="douc"/>
 		</list>
 	</section>
 </section>

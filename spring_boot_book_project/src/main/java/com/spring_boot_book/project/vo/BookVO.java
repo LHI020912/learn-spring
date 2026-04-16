@@ -16,6 +16,7 @@ public class BookVO {
 	private Date bookDate;
 	private int bookStock;
 	private String pubNo;
+	
 	public String getBookNo() {
 		return bookNo;
 	}

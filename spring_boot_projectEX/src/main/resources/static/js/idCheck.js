@@ -5,7 +5,7 @@
  */
 
 $(document).ready(function(){
-    $('#loginForm').on('submit',function(event){
+	$('#idCheck').on('click', function(event){
         event.preventDefault();
 		let memId = $('#memId').val();
 		
@@ -17,8 +17,10 @@ $(document).ready(function(){
 				data:{"id":memId},
 				dataType:"text",
 				success:function(result){
-					if(result>0){ alert("사용할 수 없는 ID 입니다.");}
-					else { alert("사용가능한 ID입니다.");}
+					if(result=="1"){ 
+						alert("사용할 수 없는 ID 입니다.");
+						$('#memId').val("").focus();
+					}else { alert("사용가능한 ID입니다.");}
 				},
 				error:function(){ alert("실패"); }
 			});
