@@ -1,0 +1,15 @@
+package com.spring_boot_fileupload.mybatis;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+@ComponentScan(basePackages= {"com.spring_boot_fileupload.mybatis"})
+@MapperScan(basePackages= {"com.spring_boot_fileupload.mybatis"})
+public class SpringBootFileuploadApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(SpringBootFileuploadApplication.class, args);
+	}
+
+}

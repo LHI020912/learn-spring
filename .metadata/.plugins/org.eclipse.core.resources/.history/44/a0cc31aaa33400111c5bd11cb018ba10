@@ -1,0 +1,5 @@
+package com.spring_boot_fileupload.mybatis.controller;
+
+public class fileController {
+
+}
