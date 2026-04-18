@@ -99,7 +99,7 @@ public class MemberController {
 	//////////////////
 	
 	// 확인
-	@PostMapping("/member/memberInfo")
+	@GetMapping("/member/memberInfo")
 	public String memberInfo(HttpSession session, Model model) {
 		String memId = (String) session.getAttribute("sid");
 		MemberDTO dto = memService.getMemberInfo(memId);
@@ -107,16 +107,25 @@ public class MemberController {
 		return "member/memberInfo";
 	}
 	
-	// 수정
+	// 수정 폼
+	@GetMapping("/member/memberUpdate")
+	public String memberUpdateForm(HttpSession session, Model model) {
+	    String memId = (String) session.getAttribute("sid");
+	    MemberDTO dto = memService.getMemberInfo(memId);
+	    model.addAttribute("memDto", dto);
+	    return "member/memberUpdate";
+	}
+
+	// 수정 처리
 	@PostMapping("/member/memberUpdate")
-	public String memberUpdate(MemberDTO dto,
-					  @RequestParam("memHp1") String memHp1,
-					  @RequestParam("memHp2") String memHp2,
-					  @RequestParam("memHp3") String memHp3) {
-		String memHp = memHp1+"-"+memHp2+"-"+memHp3;
-		dto.setMemHp(memHp);
-		memService.updateMember(dto);
-		return "redirect:/member/myPage";
+	public String memberUpdate(MemberDTO dto, 
+	                           @RequestParam("memHp1") String memHp1, 
+	                           @RequestParam("memHp2") String memHp2, 
+	                           @RequestParam("memHp3") String memHp3) {
+	    String memHp = memHp1 + "-" + memHp2 + "-" + memHp3;
+	    dto.setMemHp(memHp);
+	    memService.updateMember(dto);
+	    return "redirect:/member/myPage"; 
 	}
 	
 	// 탈퇴

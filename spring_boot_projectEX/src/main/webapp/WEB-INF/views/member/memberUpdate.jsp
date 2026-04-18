@@ -24,9 +24,9 @@
 		           		</tr>
 			            <tr>
 			            	<th>휴대폰 번호</th>
-			            	<td><input type="text" name="memHp1" value="${memDto.memHp1}" size="3"> 
-			                    - <input type="text" name="memHp2" value="${memDto.memHp2}" size="4">
-			                    - <input type="text" name="memHp3" value="${memDto.memHp3}" size="4"></td>
+			            	<td><input type="text" name="memHp1" value="${hp1}" size="3"> - 
+								<input type="text" name="memHp2" value="${hp2}" size="4"> - 
+								<input type="text" name="memHp3" value="${hp3}" size="4"></td>
 	                    </tr>
 	                    <tr>
 			            	<th>이메일</th>

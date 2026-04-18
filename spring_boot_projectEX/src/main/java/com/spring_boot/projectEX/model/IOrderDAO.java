@@ -1,6 +1,7 @@
 package com.spring_boot.projectEX.model;
 
 import java.util.ArrayList;
+
 import java.util.HashMap;
 
 import com.spring_boot.projectEX.dto.MemberDTO;
@@ -13,4 +14,5 @@ public interface IOrderDAO {
 	public void deleteCartAfterOrder(String memId);				// 주문 완료된 장바구니 초기화
 	
 	public ArrayList<OrderInfoDTO> orderList(String memId);
+
 }

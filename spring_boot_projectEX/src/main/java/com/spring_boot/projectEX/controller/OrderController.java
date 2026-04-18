@@ -103,4 +103,5 @@ public class OrderController {
 		model.addAttribute("ordList",ordList);
 		return "product/orderListView";
 	}
+	
 }

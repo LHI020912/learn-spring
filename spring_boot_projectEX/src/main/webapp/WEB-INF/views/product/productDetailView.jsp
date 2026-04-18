@@ -9,6 +9,7 @@
 		<title>상품 상세 조회</title>
 		<c:import url="/WEB-INF/views/layout/head.jsp" />
 		<script src="<c:url value='/js/productDetail.js'/>"></script>
+		<script src="<c:url value='/js/prdDelete.js'/>"></script>
 	</head>
 	<body>
 		<div id="wrap">
@@ -49,7 +50,7 @@
 								    <input type="submit" id="insertCart" value="장바구니">
 								    <input type="submit" id="insertOrder" value="주문하기">
 								    <button type="button" onclick="location.href='<c:url value='/product/updateProductForm/${prd.prdNo}'/>'">수정</button>
-				            		<button type="button" class="deleteBtn" data-no="${prd.prdNo}">삭제</button>
+				            		<button type="button" class="deleteBtn" data-no="${prd.prdNo}" data-ctg="${prd.ctgId}">삭제</button>
 							   </c:if>
 						</td></tr>
 					</table>
