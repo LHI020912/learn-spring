@@ -4,6 +4,7 @@
 	<section name="java.lang.Class">
 		<item key="replaceBarOpen" value="false"/>
 		<list key="findhistory">
+			<item value="VO"/>
 			<item value="detail"/>
 			<item value="detailViewOrder"/>
 			<item value=";"/>
@@ -18,7 +19,6 @@
 			<item value="JSON.sr"/>
 			<item value="console"/>
 			<item value="emnt"/>
-			<item value="emt"/>
 		</list>
 	</section>
 </section>
